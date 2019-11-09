@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Tic_tac_toe_Client
+namespace TicTacToe
 {
     /// <summary>
     /// Interaction logic for App.xaml
