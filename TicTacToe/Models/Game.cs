@@ -8,5 +8,14 @@ namespace TicTacToe.Models
 {
     public class Game
     {
+        public List<Player> Players { get; set; }
+        public GameMap Map { get; set; }
+
+        public Game()
+        {
+            Players = new List<Player>();
+            Players.Add(new Player()); 
+            Players.Add(new Player());
+        }
     }
 }

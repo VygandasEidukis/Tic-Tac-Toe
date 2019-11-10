@@ -13,42 +13,47 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
-            <Grid Margin="10">
-                <StackPanel>
-                    <TextBlock Text="Player 1 select:" />
-                    <StackPanel Width="130" Orientation="Horizontal">
-                        <Button
-                            x:Name="XChoice"
-                            Width="50"
-                            Height="50"
-                            Margin="10"
-                            HorizontalAlignment="Left"
-                            Content="X" />
-                        <Button
-                            x:Name="OChoice"
-                            Width="50"
-                            Height="50"
-                            HorizontalAlignment="Left"
-                            Content="O" />
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Player 1 select:" />
+                        <StackPanel Width="130" Orientation="Horizontal">
+                            <Button
+                                x:Name="XChoice"
+                                Width="50"
+                                Height="50"
+                                Margin="10"
+                                HorizontalAlignment="Left"
+                                Content="X" />
+                            <Button
+                                x:Name="OChoice"
+                                Width="50"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                Content="O" />
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
-            </Grid>
-            <Grid Margin="10">
-                <TextBlock Text="Select Map size:" />
-                <ListBox Margin="5" Height="30">
-                    <ListBoxItem x:Name="three">3x3</ListBoxItem>
-                    <ListBoxItem x:Name="four">4x4</ListBoxItem>
-                    <ListBoxItem x:Name="five">5x5</ListBoxItem>
-                </ListBox>
-            </Grid>
+                </Grid>
+                <Grid Margin="10">
+                    <TextBlock Text="Select Map size:" />
+                    <ComboBox
+                        x:Name="MapSize"
+                        Height="30"
+                        Margin="5"
+                        ItemsSource="{Binding MapSizes, Mode=TwoWay}"
+                        SelectedItem="{Binding SelectedMapSize, Mode=TwoWay}" />
+                </Grid>
 
-            
-        </StackPanel>
-            <Button Width="75" Height="50" Content="choose"></Button>
+
+            </StackPanel>
+            <Button
+                x:Name="Choose"
+                Width="75"
+                Height="50"
+                Content="choose" />
         </StackPanel>
     </Grid>
 </UserControl>

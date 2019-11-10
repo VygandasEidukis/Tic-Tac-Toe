@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TicTacToe.ViewModels;
 
 namespace TicTacToe
 {
@@ -20,7 +21,7 @@ namespace TicTacToe
         #region Overrides
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            // DisplayRootViewFor<IShell>();
+            DisplayRootViewFor<MainViewModel>();
         }
         #endregion
     }
