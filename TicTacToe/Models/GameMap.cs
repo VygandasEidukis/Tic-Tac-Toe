@@ -10,7 +10,20 @@ namespace TicTacToe.Models
     {
         public int Size { get; set; } = 3;
         public string Name { get; set; } = "3x3";
+        public List<Tile> Tiles { get; set; }
 
+        public GameMap()
+        {
+            Tiles = new List<Tile>();
+        }
+
+        public void GenerateMap()
+        {
+            for(int i = 0; i < Size*Size; i++)
+            {
+                Tiles.Add(new Tile());
+            }
+        }
         public override string ToString()
         {
             return Name;

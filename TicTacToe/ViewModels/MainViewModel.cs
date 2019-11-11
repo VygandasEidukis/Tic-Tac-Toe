@@ -13,14 +13,12 @@ namespace TicTacToe.ViewModels
         public Game game { get; set; }
         public MainViewModel()
         {
-            game = new Game();
-
             ActivateItem(new SelectionViewModel());
         }
 
         public void ChangeViewToGame()
         {
-            ActivateItem(new GameViewModel());
+            ActivateItem(new GameViewModel(game));
         }
     }
 }

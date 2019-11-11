@@ -74,6 +74,7 @@
     <Compile Include="Models\GameMap.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\SignEnum.cs" />
+    <Compile Include="Models\Tile.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SelectionViewModel.cs" />

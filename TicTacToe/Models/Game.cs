@@ -16,6 +16,8 @@ namespace TicTacToe.Models
             Players = new List<Player>();
             Players.Add(new Player()); 
             Players.Add(new Player());
+            Map = new GameMap();
+            Map.GenerateMap();
         }
     }
 }
