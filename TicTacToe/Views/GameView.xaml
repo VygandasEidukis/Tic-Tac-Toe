@@ -9,22 +9,14 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel HorizontalAlignment="Center">
-            <StackPanel VerticalAlignment="Center">
-                <ItemsControl x:Name="Test" ItemsSource="{Binding _Game.Map.Tiles}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button
-                                Margin="5"
-                                cal:Message.Attach="TilePressed($this)"
-                                Content="{Binding Text}" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </StackPanel>
+        <StackPanel
+            x:Name="VerticalPanel"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical" />
 
     </Grid>
 </UserControl>

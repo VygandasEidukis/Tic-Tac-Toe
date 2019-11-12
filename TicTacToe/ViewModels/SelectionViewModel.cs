@@ -43,6 +43,14 @@ namespace TicTacToe.ViewModels
             set 
             { 
                 (Parent as MainViewModel).game.Players[0] = value; 
+                if(value.Sign == SignEnum.X)
+                {
+                    (Parent as MainViewModel).game.Players[1].Sign = SignEnum.O;
+                }
+                else
+                {
+                    (Parent as MainViewModel).game.Players[1].Sign = SignEnum.X;
+                }
             } 
         }
         #endregion

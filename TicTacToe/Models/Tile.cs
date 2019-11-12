@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace TicTacToe.Models
 {
     public class Tile
     {
+        public Button button { get; set; }
         public SignEnum? Sign { get; set; } = null;
         public string Text { 
             get 
