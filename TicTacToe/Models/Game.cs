@@ -10,6 +10,9 @@ namespace TicTacToe.Models
 {
     public class Game
     {
+        public delegate void GameWon(SignEnum winner);
+        public GameWon _WinnerDelegate;
+
         public List<Player> Players { get; set; }
         public GameMap Map { get; set; }
 
@@ -60,7 +63,11 @@ namespace TicTacToe.Models
             if ((sender as Button).Content == "")
             {
                 FindTile(sender as Button).Update(CurrentPlayerTrun.Sign);
-                GameLogic.CheckWin(Map, CurrentPlayerTrun.Sign);
+                if(GameLogic.CheckWin(Map, CurrentPlayerTrun.Sign))
+                {
+                    if (_WinnerDelegate != null)
+                        _WinnerDelegate.Invoke(CurrentPlayerTrun.Sign);
+                }
                 CurrentPlayerTrun = new Player();
             }
         }

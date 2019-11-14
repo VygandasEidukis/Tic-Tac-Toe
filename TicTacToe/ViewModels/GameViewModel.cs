@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
@@ -25,6 +26,13 @@ namespace TicTacToe.ViewModels
         public GameViewModel(Game game)
         {
             this.game = game;
+            game._WinnerDelegate += AnnounceWinner;
+        }
+
+        public void AnnounceWinner(SignEnum winner)
+        {
+            MessageBox.Show($"You Won {winner}", "Winner", MessageBoxButton.OK, MessageBoxImage.Information);
+            (Parent as MainViewModel).ActivateItem(new SelectionViewModel());
         }
     }
 }
