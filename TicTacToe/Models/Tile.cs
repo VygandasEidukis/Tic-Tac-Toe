@@ -16,16 +16,17 @@ namespace TicTacToe.Models
             get { return _button; }
             set 
             { 
-                _button = value; 
-                if((button.Content as SignEnum?) != null)
-                {
-                    Sign = button.Content as SignEnum?;
-                }
+                _button = value;
             }
         }
 
+        private SignEnum? _Sign;
 
-        public SignEnum? Sign { get; set; } = null;
+        public SignEnum? Sign
+        {
+            get { return _Sign; }
+            set { _Sign = value; }
+        }
         public string Text { 
             get 
             {
@@ -39,6 +40,12 @@ namespace TicTacToe.Models
                 }
                 return "";
             } 
+        }
+
+        public void Update(SignEnum? enu)
+        {
+            Sign = enu;
+            button.Content = enu;
         }
     }
 }

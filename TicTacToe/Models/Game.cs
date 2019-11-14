@@ -59,9 +59,25 @@ namespace TicTacToe.Models
 
             if ((sender as Button).Content == "")
             {
-                (sender as Button).Content = CurrentPlayerTrun.Sign;
+                FindTile(sender as Button).Update(CurrentPlayerTrun.Sign);
+                GameLogic.CheckWin(Map, CurrentPlayerTrun.Sign);
                 CurrentPlayerTrun = new Player();
             }
+        }
+
+        public Tile FindTile(Button button)
+        {
+            for(int i = 0; i < Map.Size; i++)
+            {
+                foreach (Tile tile in Map.Tiles[i])
+                {
+                    if(tile.button == button)
+                    {
+                        return tile;
+                    }
+                }
+            }
+            return null;
         }
     }
 }
