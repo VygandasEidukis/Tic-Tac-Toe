@@ -9,7 +9,22 @@ namespace TicTacToe.Models
 {
     public class Tile
     {
-        public Button button { get; set; }
+        private Button _button;
+
+        public Button button
+        {
+            get { return _button; }
+            set 
+            { 
+                _button = value; 
+                if((button.Content as SignEnum?) != null)
+                {
+                    Sign = button.Content as SignEnum?;
+                }
+            }
+        }
+
+
         public SignEnum? Sign { get; set; } = null;
         public string Text { 
             get 

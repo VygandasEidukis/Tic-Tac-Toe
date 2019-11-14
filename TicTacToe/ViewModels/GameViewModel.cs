@@ -26,10 +26,5 @@ namespace TicTacToe.ViewModels
         {
             this.game = game;
         }
-
-        public void TilePressed(object tile)
-        {
-
-        }
     }
 }

@@ -59,7 +59,7 @@ namespace TicTacToe.Models
 
             if ((sender as Button).Content == "")
             {
-                (sender as Button).Content = CurrentPlayerTrun.Sign.ToString();
+                (sender as Button).Content = CurrentPlayerTrun.Sign;
                 CurrentPlayerTrun = new Player();
             }
         }
