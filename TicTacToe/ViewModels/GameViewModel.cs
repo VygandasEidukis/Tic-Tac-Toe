@@ -15,7 +15,7 @@ namespace TicTacToe.ViewModels
 
         public Game game
         {
-            get { return _Game; }
+            get => _Game;
             set 
             { 
                 _Game = value;
@@ -26,13 +26,13 @@ namespace TicTacToe.ViewModels
         public GameViewModel(Game game)
         {
             this.game = game;
-            game._WinnerDelegate += AnnounceWinner;
+            game.WinnerDelegate += AnnounceWinner;
         }
 
         public void AnnounceWinner(SignEnum winner)
         {
             MessageBox.Show($"You Won {winner}", "Winner", MessageBoxButton.OK, MessageBoxImage.Information);
-            (Parent as MainViewModel).ActivateItem(new SelectionViewModel());
+            (Parent as MainViewModel)?.ActivateItem(new SelectionViewModel());
         }
     }
 }

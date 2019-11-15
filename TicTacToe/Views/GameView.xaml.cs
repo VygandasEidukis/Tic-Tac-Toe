@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TicTacToe.ViewModels;
 
 namespace TicTacToe.Views
@@ -21,7 +9,7 @@ namespace TicTacToe.Views
     /// </summary>
     public partial class GameView : UserControl
     {
-        GameViewModel gvm;
+        GameViewModel _gvm;
         public GameView()
         {
             InitializeComponent();
@@ -29,28 +17,26 @@ namespace TicTacToe.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            gvm = DataContext as GameViewModel;
+            _gvm = DataContext as GameViewModel;
             GenerateButtons();
         }
 
         private void GenerateButtons()
         {
-            gvm.game.Map.GenerateMap();
-            int size = gvm.game.Map.Size;
-            for (int i = 0; i < size; i++)
+            _gvm.game.Map.GenerateMap();
+            int size = _gvm.game.Map.Size;
+            for (var i = 0; i < size; i++)
             {
-                StackPanel sp = new StackPanel();
-                sp.Orientation = Orientation.Horizontal;
+                var sp = new StackPanel {Orientation = Orientation.Horizontal};
                 VerticalPanel.Children.Add(sp);
-                for(int x = 0; x < size; x++)
+                for(var x = 0; x < size; x++)
                 {
-                    gvm.game.Map.Tiles[i][x].button = new Button();
-                    gvm.game.Map.Tiles[i][x].button.Width = 50;
-                    gvm.game.Map.Tiles[i][x].button.Height = 50;
-                    gvm.game.Map.Tiles[i][x].button.Margin = new Thickness(3);
-                    gvm.game.Map.Tiles[i][x].button.Content = "";
-                    gvm.game.Map.Tiles[i][x].button.Click += gvm.game.TileClicked;
-                    sp.Children.Add(gvm.game.Map.Tiles[i][x].button);
+                    _gvm.game.Map.Tiles[i][x].Button = new Button
+                    {
+                        Width = 50, Height = 50, Margin = new Thickness(3), Content = ""
+                    };
+                    _gvm.game.Map.Tiles[i][x].Button.Click += _gvm.game.TileClicked;
+                    sp.Children.Add(_gvm.game.Map.Tiles[i][x].Button);
                 }
             }
         }

@@ -27,10 +27,10 @@ namespace TicTacToe.Models
 
         private static bool CheckRows(GameMap map, SignEnum player)
         {
-            for(int i = 0; i < map.Size; i++)
+            for(var i = 0; i < map.Size; i++)
             {
-                int sum = 0;
-                for(int x = 0; x < map.Size; x++)
+                var sum = 0;
+                for(var x = 0; x < map.Size; x++)
                 {
                     if (map.Tiles[i][x].Sign == player)
                         sum++;
@@ -43,10 +43,10 @@ namespace TicTacToe.Models
 
         private static bool CheckColumns(GameMap map, SignEnum player)
         {
-            for (int i = 0; i < map.Size; i++)
+            for (var i = 0; i < map.Size; i++)
             {
-                int sum = 0;
-                for (int x = 0; x < map.Size; x++)
+                var sum = 0;
+                for (var x = 0; x < map.Size; x++)
                 {
                     if (map.Tiles[x][i].Sign == player)
                         sum++;
@@ -59,30 +59,26 @@ namespace TicTacToe.Models
 
         private static bool CheckDiagonal(GameMap map, SignEnum player)
         {
-            int sum = 0; 
-            for(int i = 0; i < map.Size; i++)
+            var sum = 0; 
+            for(var i = 0; i < map.Size; i++)
             {
                 if (map.Tiles[i][i].Sign == player)
                     sum++;
             }
-            if (CheckWin(sum, map))
-                return true;
-            return false;
+            return CheckWin(sum, map);
         }
 
         private static bool CheckDiagonalReverse(GameMap map, SignEnum player)
         {
-            int sum = 0;
-            int widthPos = map.Size - 1;
-            for (int i = 0; i < map.Size; i++)
+            var sum = 0;
+            var widthPos = map.Size - 1;
+            for (var i = 0; i < map.Size; i++)
             {
                 if (map.Tiles[i][widthPos].Sign == player)
                     sum++;
                 widthPos--;
             }
-            if (CheckWin(sum, map))
-                return true;
-            return false;
+            return CheckWin(sum, map);
         }
 
         private static bool CheckWin(int sum, GameMap map)

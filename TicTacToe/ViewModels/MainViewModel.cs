@@ -16,6 +16,11 @@ namespace TicTacToe.ViewModels
             ActivateItem(new SelectionViewModel());
         }
 
+        public sealed override void ActivateItem(object item)
+        {
+            base.ActivateItem(item);
+        }
+
         public void ChangeViewToGame()
         {
             ActivateItem(new GameViewModel(game));

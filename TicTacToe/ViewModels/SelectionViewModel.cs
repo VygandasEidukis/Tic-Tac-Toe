@@ -1,9 +1,4 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TicTacToe.Models;
 
 namespace TicTacToe.ViewModels
@@ -22,34 +17,31 @@ namespace TicTacToe.ViewModels
                 NotifyOfPropertyChange(() => MapSizes);
             }
         }
-        private GameMap _SelectedMapSize;
+        private GameMap _selectedMapSize;
         public GameMap SelectedMapSize
         {
-            get { return _SelectedMapSize; }
+            get { return _selectedMapSize; }
             set 
             { 
-                _SelectedMapSize = value;
+                _selectedMapSize = value;
                 if ((Parent as MainViewModel) != null)
                     (Parent as MainViewModel).game.Map = value;
                 NotifyOfPropertyChange(() => SelectedMapSize);
             }
         }
-        public Player player 
+        public Player Player 
         { 
-            get 
-            { 
-                return (Parent as MainViewModel).game.Players[0]; 
-            }
+            get => (Parent as MainViewModel)?.game.Players[0];
             set 
             { 
-                (Parent as MainViewModel).game.Players[0] = value; 
+                ((MainViewModel) Parent).game.Players[0] = value; 
                 if(value.Sign == SignEnum.X)
                 {
-                    (Parent as MainViewModel).game.Players[1].Sign = SignEnum.O;
+                    ((MainViewModel) Parent).game.Players[1].Sign = SignEnum.O;
                 }
                 else
                 {
-                    (Parent as MainViewModel).game.Players[1].Sign = SignEnum.X;
+                    ((MainViewModel) Parent).game.Players[1].Sign = SignEnum.X;
                 }
             } 
         }
@@ -72,38 +64,31 @@ namespace TicTacToe.ViewModels
 
         public void FormLoaded()
         {
-            (Parent as MainViewModel).game = new Game();
+            ((MainViewModel) Parent).game = new Game();
         }
 
         public void XChoice()
         {
-            player.Sign = SignEnum.X;
+            Player.Sign = SignEnum.X;
         }
 
         public void OChoice()
         {
-            player.Sign = SignEnum.O;
+            Player.Sign = SignEnum.O;
         }
 
         public void Choose()
         {
-            if(player != null)
-            {
-                SaveSettings();
-                (Parent as MainViewModel).ChangeViewToGame();
-            }
+            if (Player == null) return;
+            
+            SaveSettings();
+            (Parent as MainViewModel)?.ChangeViewToGame();
         }
 
         private void SaveSettings()
         {
-            if(player.Sign == SignEnum.O)
-            {
-                (Parent as MainViewModel).game.Players[1].Sign = SignEnum.X;
-            }else
-            {
-                (Parent as MainViewModel).game.Players[1].Sign = SignEnum.O;
-            }
-            (Parent as MainViewModel).game.Map = SelectedMapSize;
+            ((MainViewModel) Parent).game.Players[1].Sign = Player.Sign == SignEnum.O ? SignEnum.X : SignEnum.O;
+            ((MainViewModel) Parent).game.Map = SelectedMapSize;
         }
 
     }

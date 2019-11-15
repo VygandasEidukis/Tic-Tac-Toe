@@ -9,43 +9,29 @@ namespace TicTacToe.Models
 {
     public class Tile
     {
-        private Button _button;
+        public Button Button { get; set; }
 
-        public Button button
-        {
-            get { return _button; }
-            set 
-            { 
-                _button = value;
-            }
-        }
+        public SignEnum? Sign { get; set; }
 
-        private SignEnum? _Sign;
-
-        public SignEnum? Sign
-        {
-            get { return _Sign; }
-            set { _Sign = value; }
-        }
         public string Text { 
             get 
             {
-                if(Sign == SignEnum.O)
+                switch (Sign)
                 {
-                    return "O";
+                    case SignEnum.O:
+                        return "O";
+                    case SignEnum.X:
+                        return "X";
+                    default:
+                        return "";
                 }
-                if(Sign == SignEnum.X)
-                {
-                    return "X";
-                }
-                return "";
             } 
         }
 
         public void Update(SignEnum? enu)
         {
             Sign = enu;
-            button.Content = enu;
+            Button.Content = enu;
         }
     }
 }
