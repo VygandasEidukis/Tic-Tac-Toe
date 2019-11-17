@@ -23,20 +23,20 @@ namespace TicTacToe.Views
 
         private void GenerateButtons()
         {
-            _gvm.game.Map.GenerateMap();
-            int size = _gvm.game.Map.Size;
+            _gvm.Game.Map.GenerateMap();
+            int size = _gvm.Game.Map.Size;
             for (var i = 0; i < size; i++)
             {
                 var sp = new StackPanel {Orientation = Orientation.Horizontal};
                 VerticalPanel.Children.Add(sp);
                 for(var x = 0; x < size; x++)
                 {
-                    _gvm.game.Map.Tiles[i][x].Button = new Button
+                    _gvm.Game.Map.Tiles[i][x].Button = new Button
                     {
                         Width = 50, Height = 50, Margin = new Thickness(3), Content = ""
                     };
-                    _gvm.game.Map.Tiles[i][x].Button.Click += _gvm.game.TileClicked;
-                    sp.Children.Add(_gvm.game.Map.Tiles[i][x].Button);
+                    _gvm.Game.Map.Tiles[i][x].Button.Click += _gvm.Game.TileClicked;
+                    sp.Children.Add(_gvm.Game.Map.Tiles[i][x].Button);
                 }
             }
         }

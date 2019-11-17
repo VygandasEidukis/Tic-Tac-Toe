@@ -25,23 +25,23 @@ namespace TicTacToe.ViewModels
             { 
                 _selectedMapSize = value;
                 if ((Parent as MainViewModel) != null)
-                    (Parent as MainViewModel).game.Map = value;
+                    (Parent as MainViewModel).Game.Map = value;
                 NotifyOfPropertyChange(() => SelectedMapSize);
             }
         }
         public Player Player 
         { 
-            get => (Parent as MainViewModel)?.game.Players[0];
+            get => (Parent as MainViewModel)?.Game.Players[0];
             set 
             { 
-                ((MainViewModel) Parent).game.Players[0] = value; 
+                ((MainViewModel) Parent).Game.Players[0] = value; 
                 if(value.Sign == SignEnum.X)
                 {
-                    ((MainViewModel) Parent).game.Players[1].Sign = SignEnum.O;
+                    ((MainViewModel) Parent).Game.Players[1].Sign = SignEnum.O;
                 }
                 else
                 {
-                    ((MainViewModel) Parent).game.Players[1].Sign = SignEnum.X;
+                    ((MainViewModel) Parent).Game.Players[1].Sign = SignEnum.X;
                 }
             } 
         }
@@ -64,7 +64,7 @@ namespace TicTacToe.ViewModels
 
         public void FormLoaded()
         {
-            ((MainViewModel) Parent).game = new Game();
+            ((MainViewModel) Parent).Game = new Game();
         }
 
         public void XChoice()
@@ -87,8 +87,8 @@ namespace TicTacToe.ViewModels
 
         private void SaveSettings()
         {
-            ((MainViewModel) Parent).game.Players[1].Sign = Player.Sign == SignEnum.O ? SignEnum.X : SignEnum.O;
-            ((MainViewModel) Parent).game.Map = SelectedMapSize;
+            ((MainViewModel) Parent).Game.Players[1].Sign = Player.Sign == SignEnum.O ? SignEnum.X : SignEnum.O;
+            ((MainViewModel) Parent).Game.Map = SelectedMapSize;
         }
 
     }

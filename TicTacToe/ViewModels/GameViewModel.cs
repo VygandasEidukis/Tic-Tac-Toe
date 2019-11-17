@@ -13,19 +13,19 @@ namespace TicTacToe.ViewModels
     {
         private Game _Game;
 
-        public Game game
+        public Game Game
         {
             get => _Game;
             set 
             { 
                 _Game = value;
-                NotifyOfPropertyChange(()=>game);
+                NotifyOfPropertyChange(()=>Game);
             }
         }
 
         public GameViewModel(Game game)
         {
-            this.game = game;
+            this.Game = game;
             game.WinnerDelegate += AnnounceWinner;
         }
 
