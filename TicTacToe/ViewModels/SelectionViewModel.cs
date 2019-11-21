@@ -32,17 +32,10 @@ namespace TicTacToe.ViewModels
         public Player Player 
         { 
             get => (Parent as MainViewModel)?.Game.Players[0];
-            set 
-            { 
-                ((MainViewModel) Parent).Game.Players[0] = value; 
-                if(value.Sign == SignEnum.X)
-                {
-                    ((MainViewModel) Parent).Game.Players[1].Sign = SignEnum.O;
-                }
-                else
-                {
-                    ((MainViewModel) Parent).Game.Players[1].Sign = SignEnum.X;
-                }
+            set
+            {
+                ((MainViewModel) Parent).Game.Players[0] = value;
+                ((MainViewModel) Parent).Game.Players[1].Sign = value.Sign == SignEnum.X ? SignEnum.O : SignEnum.X;
             } 
         }
         #endregion

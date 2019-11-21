@@ -15,7 +15,7 @@ namespace TicTacToe.Views
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e = null)
         {
             _gvm = DataContext as GameViewModel;
             GenerateButtons();

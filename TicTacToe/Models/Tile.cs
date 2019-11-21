@@ -13,25 +13,13 @@ namespace TicTacToe.Models
 
         public SignEnum? Sign { get; set; }
 
-        public string Text { 
-            get 
-            {
-                switch (Sign)
-                {
-                    case SignEnum.O:
-                        return "O";
-                    case SignEnum.X:
-                        return "X";
-                    default:
-                        return "";
-                }
-            } 
-        }
-
         public void Update(SignEnum? enu)
         {
             Sign = enu;
-            Button.Content = enu;
+            if (Button != null)
+            {
+                Button.Content = enu;
+            }
         }
     }
 }

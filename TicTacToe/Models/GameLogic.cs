@@ -25,7 +25,7 @@ namespace TicTacToe.Models
             return false;
         }
 
-        private static bool CheckRows(GameMap map, SignEnum player)
+        public static bool CheckRows(GameMap map, SignEnum player)
         {
             for(var i = 0; i < map.Size; i++)
             {
@@ -41,7 +41,7 @@ namespace TicTacToe.Models
             return false;
         }
 
-        private static bool CheckColumns(GameMap map, SignEnum player)
+        public static bool CheckColumns(GameMap map, SignEnum player)
         {
             for (var i = 0; i < map.Size; i++)
             {
@@ -57,7 +57,7 @@ namespace TicTacToe.Models
             return false;
         }
 
-        private static bool CheckDiagonal(GameMap map, SignEnum player)
+        public static bool CheckDiagonal(GameMap map, SignEnum player)
         {
             var sum = 0; 
             for(var i = 0; i < map.Size; i++)
@@ -68,7 +68,7 @@ namespace TicTacToe.Models
             return CheckWin(sum, map);
         }
 
-        private static bool CheckDiagonalReverse(GameMap map, SignEnum player)
+        public static bool CheckDiagonalReverse(GameMap map, SignEnum player)
         {
             var sum = 0;
             var widthPos = map.Size - 1;
@@ -80,8 +80,7 @@ namespace TicTacToe.Models
             }
             return CheckWin(sum, map);
         }
-
-        private static bool CheckWin(int sum, GameMap map)
+        public static bool CheckWin(int sum, GameMap map)
         {
             return sum == map.Size;
         }

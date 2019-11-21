@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -33,20 +34,21 @@ namespace TicTacToe.Models
         public Game()
         {
             Players = new List<Player> {new Player(), new Player()};
-
             Map = new GameMap();
             Map.GenerateMap();
-            
         }
 
-        public void TileClicked(object sender, RoutedEventArgs e)
+        public void TileClicked(object sender, object e)
         {
+            if((sender as Button) == null)
+                throw new Exception("Wrong object");
+
             if(CurrentPlayerTurn == null)
                 CurrentPlayerTurn = new Player();
 
-            if ((sender as Button)?.Content as string != "") return;
+            if (((Button) sender)?.Content as string != "") return;
 
-            FindTile(sender as Button).Update(CurrentPlayerTurn.Sign);
+            FindTile((Button) sender).Update(CurrentPlayerTurn.Sign);
             if(GameLogic.CheckWin(Map, CurrentPlayerTurn.Sign))
             {
                 WinnerDelegate?.Invoke(CurrentPlayerTurn.Sign);

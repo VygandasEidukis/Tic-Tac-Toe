@@ -11,14 +11,14 @@ namespace TicTacToe.ViewModels
 {
     class GameViewModel : Screen
     {
-        private Game _Game;
+        private Game _game;
 
         public Game Game
         {
-            get => _Game;
+            get => _game;
             set 
             { 
-                _Game = value;
+                _game = value;
                 NotifyOfPropertyChange(()=>Game);
             }
         }
