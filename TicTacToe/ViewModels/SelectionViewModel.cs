@@ -6,13 +6,13 @@ namespace TicTacToe.ViewModels
     class SelectionViewModel : Screen
     {
         #region PROPS
-        private BindableCollection<GameMap> _MapSizes;
+        private BindableCollection<GameMap> _mapSizes;
         public BindableCollection<GameMap> MapSizes
         {
-            get { return _MapSizes; }
+            get { return _mapSizes; }
             set 
             { 
-                _MapSizes = value;
+                _mapSizes = value;
                 SelectedMapSize = MapSizes[0];
                 NotifyOfPropertyChange(() => MapSizes);
             }
@@ -25,7 +25,7 @@ namespace TicTacToe.ViewModels
             { 
                 _selectedMapSize = value;
                 if ((Parent as MainViewModel) != null)
-                    (Parent as MainViewModel).Game.Map = value;
+                    ((MainViewModel) Parent).Game.Map = value;
                 NotifyOfPropertyChange(() => SelectedMapSize);
             }
         }
@@ -51,6 +51,9 @@ namespace TicTacToe.ViewModels
                 },
                 {
                     new GameMap(){Name="5x5", Size = 5}
+                },
+                {
+                    new GameMap(){Name="6x6", Size = 6}
                 }
             };
         }
